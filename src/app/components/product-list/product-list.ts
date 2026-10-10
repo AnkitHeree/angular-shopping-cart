@@ -1,5 +1,5 @@
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ChangeDetectorRef  } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductService } from '../../service/product';
 import { Product } from '../../models/products';
@@ -18,7 +18,9 @@ export class ProductList implements OnInit {
   loading = true;
   errorMessage = '';
 
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService,
+    private cdr:ChangeDetectorRef,
+  ) {}
 
   ngOnInit(): void {
 
@@ -27,12 +29,14 @@ export class ProductList implements OnInit {
       next: (response) => {
         this.products = response.products;
         this.loading = false;
+        this.cdr.detectChanges();
       },
 
       error: (error) => {
         console.error(error);
         this.errorMessage = 'Products load nahi ho paye.';
         this.loading = false;
+        this.cdr.detectChanges();
       }
 
     });
