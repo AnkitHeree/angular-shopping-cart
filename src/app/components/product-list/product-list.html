@@ -1,0 +1,30 @@
+<h2>Our Products</h2>
+
+<p *ngIf="loading">Loading products...</p>
+
+<p *ngIf="errorMessage">
+  {{ errorMessage }}
+</p>
+
+<div class="products">
+
+  <div class="product-card" *ngFor="let product of products">
+
+    <img
+      [src]="product.thumbnail"
+      [alt]="product.title"
+    >
+
+    <h3>{{ product.title }}</h3>
+
+    <p>{{ product.description }}</p>
+
+    <h4>Price: ${{ product.price }}</h4>
+
+    <button>
+      Add to Cart
+    </button>
+
+  </div>
+
+</div>
