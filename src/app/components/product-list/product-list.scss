@@ -63,11 +63,23 @@ font-family:'Courier New', Courier, monospace;
 }
 
 button {
-  width: 100%;
+  width: 60%;
+  margin-left: 5px;
+  margin-right: 5px;
   padding: 12px;
   border: none;
   border-radius: 6px;
   background: #2563eb;
+  color: white;
+  cursor: pointer;
+}
+
+.plus{
+  width: 12%;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  background: #1a7241;
   color: white;
   cursor: pointer;
 }

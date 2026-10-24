@@ -15,6 +15,49 @@ export class ProductList implements OnInit {
 
   products: Product[] = [];
 
+// add to cart
+
+  cart: any[] = [];
+
+addToCart(product: any): void {
+  const item = this.cart.find(
+    x => x.id === product.id
+  );
+
+  if (item) {
+    item.quantity++;
+  } else {
+    this.cart.push({
+      ...product,
+      quantity: 1
+    });
+  }
+}
+
+RemoveToCart(product: any): void {
+  const item = this.cart.find(
+    x => x.id === product.id
+  );
+
+  if (item) {
+    if (item.quantity > 1) {
+      item.quantity--;
+    } else {
+      this.cart = this.cart.filter(
+        x => x.id !== product.id
+      );
+    }
+  }
+}
+
+getQuantity(product: any): number {
+  const item = this.cart.find(
+    x => x.id === product.id
+  );
+
+  return item ? item.quantity : 0;
+}
+
   loading = true;
   errorMessage = '';
 
